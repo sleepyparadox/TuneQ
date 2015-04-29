@@ -20,16 +20,17 @@ namespace TuneQueue
 
         private void EditorWindow_Load(object sender, EventArgs e)
         {
-            var temp = new Playlist() { Name = "Stream " + DateTime.UtcNow.ToString() };
-            temp.AddNext(new SongRequest(){SongName = "Foo"});
-            temp.AddNext(new SongRequest(){SongName = "Bar"});
+            var temp = new Playlist();
+            temp.AddLast(new SongRequest() { SongName = "Op", Url = "https://www.youtube.com/watch?v=SWvTGXlNEAw" });
+            temp.AddLast(new SongRequest() { SongName = "Eva", Url = "https://www.youtube.com/watch?v=J9pl1q7s4mI" });
+            temp.AddLast(new SongRequest() { SongName = "Careless", Url = "https://www.youtube.com/watch?v=dVmr3IaIXJc" });
 
             AddPlaylistTab(temp);
         }
 
         private void CreateNewPlaylist(object sender = null, EventArgs e = null)
         {
-            var playlist = new Playlist() { Name = "Stream " + DateTime.UtcNow.ToString() };
+            var playlist = new Playlist();
             AddPlaylistTab(playlist);
         }
 
