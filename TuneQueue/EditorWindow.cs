@@ -12,6 +12,7 @@ namespace TuneQueue
 {
     public partial class EditorWindow : Form
     {
+        private IRCClient.IRCClient _ircClient;
         public EditorWindow()
         {
             InitializeComponent();
@@ -20,12 +21,30 @@ namespace TuneQueue
 
         private void EditorWindow_Load(object sender, EventArgs e)
         {
+            _ircClient = new IRCClient.IRCClient();
+            _ircClient.onMessageReceived += OnReceivedIrcMsg;
+            _ircClient.Connect(null, null, null);
+
             var temp = new Playlist();
             temp.AddLast(new SongRequest() { SongName = "Op", Url = "https://www.youtube.com/watch?v=SWvTGXlNEAw" });
             temp.AddLast(new SongRequest() { SongName = "Eva", Url = "https://www.youtube.com/watch?v=J9pl1q7s4mI" });
             temp.AddLast(new SongRequest() { SongName = "Careless", Url = "https://www.youtube.com/watch?v=dVmr3IaIXJc" });
 
             AddPlaylistTab(temp);
+        }
+
+        private void OnReceivedIrcMsg(string msg)
+        {
+            if (msg == null || !msg.Contains(":"))
+                return;
+            var chatStartAt = msg.IndexOf(':') + 1;
+            msg = msg.Substring(chatStartAt, msg.Length - chatStartAt);
+            chatStartAt = msg.IndexOf(':') + 1;
+            msg = msg.Substring(chatStartAt, msg.Length - chatStartAt);
+            if(msg.Contains("youtube") || msg.Contains("youtu.be"))
+            {
+                (PlaylistTabs.TabPages[0].Controls[0] as PlaylistControl).Playlist.AddLast(new SongRequest() { SongName = "Request", Url = msg });
+            }
         }
 
         private void CreateNewPlaylist(object sender = null, EventArgs e = null)

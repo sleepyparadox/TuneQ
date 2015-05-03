@@ -137,6 +137,12 @@
     <Content Include="YoutubeExtractor\YoutubeExtractor.csproj" />
     <Content Include="YoutubeExtractor\YoutubeExtractor_Portable.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IRCClient\IRCClient\IRCClient.csproj">
+      <Project>{9228c919-feae-41e8-8397-b6f43db10fa8}</Project>
+      <Name>IRCClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

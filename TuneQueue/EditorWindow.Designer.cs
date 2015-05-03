@@ -32,9 +32,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SongRequestControl = new TuneQueue.SongRequestControl();
             this.BrowseSplit = new System.Windows.Forms.SplitContainer();
             this.PlaylistTabs = new System.Windows.Forms.TabControl();
-            this.SongRequestControl = new TuneQueue.SongRequestControl();
             this.EditorMenuScript.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BrowseSplit)).BeginInit();
             this.BrowseSplit.Panel1.SuspendLayout();
@@ -74,6 +74,15 @@
             this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.openToolStripMenuItem.Text = "Open";
             // 
+            // SongRequestControl
+            // 
+            this.SongRequestControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SongRequestControl.Location = new System.Drawing.Point(0, 0);
+            this.SongRequestControl.Name = "SongRequestControl";
+            this.SongRequestControl.SelectedPlaylist = null;
+            this.SongRequestControl.Size = new System.Drawing.Size(840, 316);
+            this.SongRequestControl.TabIndex = 0;
+            // 
             // BrowseSplit
             // 
             this.BrowseSplit.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -103,14 +112,6 @@
             this.PlaylistTabs.TabIndex = 0;
             this.PlaylistTabs.TabIndexChanged += new System.EventHandler(this.TabsChanged);
             // 
-            // SongRequestControl
-            // 
-            this.SongRequestControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SongRequestControl.Location = new System.Drawing.Point(0, 0);
-            this.SongRequestControl.Name = "SongRequestControl";
-            this.SongRequestControl.Size = new System.Drawing.Size(840, 316);
-            this.SongRequestControl.TabIndex = 0;
-            // 
             // EditorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -138,9 +139,9 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private SongRequestControl SongRequestControl;
         private System.Windows.Forms.SplitContainer BrowseSplit;
         private System.Windows.Forms.TabControl PlaylistTabs;
-        private SongRequestControl SongRequestControl;
 
     }
 }
